@@ -6,14 +6,16 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import com.dsalgo.factory.DriverFactory;
-import com.dsalgo.util.ConfigReader;
+import com.LMS.factory.DriverFactory;
+import com.LMS.utility.ConfigReader;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 public class ApplicationHooks {
+	
 	ConfigReader configReader = new ConfigReader();
 	Properties prop;
 	DriverFactory driverFactory = new DriverFactory();
@@ -76,19 +78,19 @@ public class ApplicationHooks {
     }
     }
     
-   /*@AfterStep
+   @AfterStep
     public void addScreenShot(Scenario scenario)
     {
     	
     	if(scenario.isFailed())
     	{
-    		LOG.error("Scenario failed");
+    		//LOG.error("Scenario failed");
     		String ScreenShotName = scenario.getName().replaceAll(" ", "_");
     		byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     		scenario.attach(sourcePath, "image/png", ScreenShotName);
     		
     	}
-    }*/
+    }
     
     public static WebDriver getDriver() {
         return driver;

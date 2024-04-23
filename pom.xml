@@ -60,8 +60,9 @@
 <dependency>
     <groupId>io.github.bonigarcia</groupId>
     <artifactId>webdrivermanager</artifactId>
-    <version>5.4.1</version>
+    <version>5.8.0</version>
 </dependency>
+
 
   
   <dependency>
@@ -102,6 +103,7 @@
 			<scope>test</scope>
 		</dependency>
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+
 <dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
@@ -123,13 +125,13 @@
 <dependency>
     <groupId>com.aventstack</groupId>
     <artifactId>extentreports</artifactId>
-    <version>5.0.9</version>
+    <version>5.1.1</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
 <dependency>
     <groupId>tech.grasshopper</groupId>
     <artifactId>extentreports-cucumber7-adapter</artifactId>
-    <version>1.13.0</version>
+    <version>1.14.0</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
 <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
@@ -151,6 +153,14 @@
 			<version>2.13.0</version>
 		</dependency>
 		
+<!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.2</version>
+    <scope>test</scope>
+</dependency>
+
  </dependencies>
  
   

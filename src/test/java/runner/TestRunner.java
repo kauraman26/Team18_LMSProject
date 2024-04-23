@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 				},
 		monochrome=true,  //console output color
-		features = "src/test/resources/DSAlgoFeatures", //location of feature files
+		features = "src/test/resources/LMSFeatures", //location of feature files
 		glue= {"stepDefinitions","AppHooks"} )
 
 public class TestRunner extends AbstractTestNGCucumberTests{

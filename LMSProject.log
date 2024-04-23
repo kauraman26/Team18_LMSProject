@@ -1,0 +1,71 @@
+2024-04-22 14:23:00.152 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.166 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2024-04-22 14:23:00.169 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.169 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.170 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.170 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.171 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.171 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.172 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.182 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 9 ms.
+2024-04-22 14:23:00.183 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.183 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.185 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.185 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.186 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.186 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.188 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.188 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.189 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.189 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.190 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.190 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.190 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.190 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.195 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 1 ms.
+2024-04-22 14:23:00.195 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.196 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.196 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.196 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2024-04-22 14:23:00.196 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2024-04-22 14:23:00.206 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Running:
+  C:\Users\bassa\AppData\Local\Temp\testng-eclipse--867029131\testng-customsuite.xml
+
+2024-04-22 14:23:00.224 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [Utils] DynamicGraphHelper.createDynamicGraph() took 4 ms.
+2024-04-22 14:23:02.612 INFO [main] [io.github.bonigarcia.wdm.WebDriverManager.resolveDriverVersion(WebDriverManager.java:1220)] - Using chromedriver 124.0.6367.60 (resolved driver for Chrome 124)
+2024-04-22 14:23:02.649 INFO [main] [io.github.bonigarcia.wdm.WebDriverManager.exportDriver(WebDriverManager.java:1282)] - Exporting webdriver.chrome.driver as C:\Users\bassa\.cache\selenium\chromedriver\win64\124.0.6367.60\chromedriver.exe
+2024-04-22 14:23:05.232 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - The user is on https://dsportalapp.herokuapp.com/home page
+2024-04-22 14:23:05.668 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:05.987 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:06.281 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:06.607 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:06.914 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:07.249 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:07.535 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:07.851 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:08.177 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:08.505 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:08.825 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:09.233 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:09.602 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Actual Message : You are not logged in
+2024-04-22 14:23:09.911 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Title of current page is : Login
+2024-04-22 14:23:10.178 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Title of current page is : Registration
+2024-04-22 14:23:16.786 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - The title of page is Registration
+2024-04-22 14:23:17.151 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - The actualerror is- Please fill out this field.
+2024-04-22 14:23:17.420 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - The actualerror is- Please fill out this field.
+2024-04-22 14:23:20.399 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - The user is on : NumpyNinja Home page
+2024-04-22 14:23:20.607 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Title of current page is : Data Structures-Introduction
+2024-04-22 14:23:21.413 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - The user is on : NumpyNinja Home page
+2024-04-22 14:23:21.735 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Title of current page is : Time Complexity
+2024-04-22 14:23:22.013 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Title of current page is : Array
+2024-04-22 14:23:22.447 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Title of current page is : Arrays in Python
+2024-04-22 14:23:22.898 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Title of current page is : Assessment
+2024-04-22 14:23:23.353 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Expected result from Excel sheetname pythonCode and 0 : hello World
+2024-04-22 14:23:24.532 INFO [main] [com.dsalgo.util.LoggerLoad.info(LoggerLoad.java:11)] - Expected result from Excel sheetname pythonCode and 2 : Element Found
+2024-04-22 14:23:24.665 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Time taken by org.testng.internal.ExitCodeListener@6fd37997: 0 ms
+2024-04-22 14:23:24.710 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Time taken by org.testng.reporters.SuiteHTMLReporter@8de4206: 45 ms
+2024-04-22 14:23:24.789 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Time taken by org.testng.reporters.jq.Main@5a95aaae: 79 ms
+2024-04-22 14:23:24.804 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Time taken by org.testng.reporters.FailedReporter@4b37d1a4: 15 ms
+2024-04-22 14:23:24.822 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Time taken by org.testng.reporters.XMLReporter@44f338ec: 16 ms
+2024-04-22 14:23:24.831 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@41a3c6f5: 9 ms
+2024-04-22 14:23:24.844 INFO [main] [org.testng.log4testng.Logger.info(Logger.java:112)] - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@5192b301: 11 ms

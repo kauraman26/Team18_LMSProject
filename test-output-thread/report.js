@@ -1,0 +1,4 @@
+$(document).ready(function() {
+CucumberHTML.timelineItems.pushArray([{"id":"dca13c84-dacc-4300-975c-0bee5bc598f2","feature":"Title of your feature","scenario":"Title of your scenario outline","start":1713896869927,"group":1,"content":"","tags":"@tag,@tag2,","end":1713896869942,"className":"undefined"},{"id":"e00df37d-9832-4442-ac02-64dee04f0c7c","feature":"Title of your feature","scenario":"Title of your scenario","start":1713896864916,"group":1,"content":"","tags":"@tag,@tag1,","end":1713896869621,"className":"undefined"},{"id":"8e112e04-510c-43c0-be14-ad4333fa0f71","feature":"Title of your feature","scenario":"Title of your scenario outline","start":1713896869856,"group":1,"content":"","tags":"@tag,@tag2,","end":1713896869897,"className":"undefined"}]);
+CucumberHTML.timelineGroups.pushArray([{"id":1,"content":"Thread[main,5,main]"}]);
+});
