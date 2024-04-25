@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 					glue= {"stepDefinitions","AppHooks"},
 					plugin= {"pretty",
 							 "json:target/json-Report/cucumber.json",
-							 "html:target/cucumberHtml-Report/dsAlgoCucumberReport.html",
+							 "html:target/cucumberHtml-Report/LMSCucumberReport.html",
 							 "junit:target/cucumberXml-Report/report.xml",
 							 "rerun:target/rerun.txt", //mandatory for capture failure
 							 "timeline:test-output-thread/",
