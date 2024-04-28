@@ -57,7 +57,7 @@ public class CommonUtils {
 	
 	public static boolean webSendKeys(WebElement element, String text) {
 		try {
-			WebElement ele = new WebDriverWait(driver, Duration.ofSeconds(10)).
+			WebElement ele = new WebDriverWait(driver, Duration.ofSeconds(20)).
 					until(ExpectedConditions.visibilityOf(element));
 		
 				if(ele.isEnabled()) {
@@ -84,20 +84,21 @@ public class CommonUtils {
 	
 
 	
-	public String getElementText(WebElement element) {
+	public static String getElementText(WebElement element) {
 		WebElement textElement = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(element));
 		return textElement.getText();
 	}
 
-	public boolean verifyElementText(String expectedMsg, WebElement element) {
+	public static boolean verifyElementText(String expectedMsg, WebElement element) {
 		if (getElementText(element).equals(expectedMsg)) {
 			return true;
 		}
 
 		return false;
 	}
-
+	
+	
 	
 }
 
