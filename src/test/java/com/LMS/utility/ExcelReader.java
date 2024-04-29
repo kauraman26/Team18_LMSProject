@@ -18,7 +18,7 @@ public class ExcelReader {
 
 	public static Map<String, List<Map<String, String>>> loadExcelData() {
 
-		String filePath = AppConfig.getProperty(LMSConstants.EXCELFILEPATH);
+		String filePath = ConfigReader.getProperty(LMSConstants.EXCELFILEPATH);
 		Workbook wb = null;
 
 		Map<String, List<Map<String, String>>> sheetNameRowsMap = new HashMap<>();

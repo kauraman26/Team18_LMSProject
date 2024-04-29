@@ -37,10 +37,13 @@ Examples:
 |deleteprogram_01|Yes|
 
 @TS_Program_Delete_04
-Scenario: Multiple delete Program validation
-Given Admin is in Manage Program page
+Scenario Outline: Multiple delete Program validation
+Given Admin is on Manage Program page for "<testcase>"
 When Admin clicks any checkbox in the data table
 Then Admin should see common delete option enabled under header Manage Program
+Examples:
+|testcase|button|
+|deleteprogram_01|Yes|
 
 @TS_Program_Delete_05
 Scenario Outline: Validate multiple program deletion by selecting Single checkbox
