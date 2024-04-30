@@ -97,6 +97,10 @@ public class CommonUtils {
 
 		return false;
 	}
+	
+	public static String ActualPageTitle() {
+		return driver.getTitle();
+	}
 
 	
 }

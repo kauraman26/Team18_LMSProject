@@ -38,6 +38,15 @@ public class ConfigReader {
 			throw new RuntimeException("url not specified in the Configuration.properties file.");
 	}
 	
+	
+	public static String getwrongApplicationUrl() {
+		String url = prop.getProperty("wrongurl");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("wrongurl not specified in the Configuration.properties file.");
+	}
+	
 	public static String getHomePageTitle() {
 		String url = prop.getProperty("homePageTitle");
 		if (url != null)
@@ -62,6 +71,32 @@ public class ConfigReader {
 			return excelfilelpath;
 		else
 			throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
+	}
+	
+	public static String getexcelfilepath1() {
+		String excelfilelpath = prop.getProperty("excelfilepath1");
+		if (excelfilelpath != null)
+			return excelfilelpath;
+		else
+			throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
+	}
+	
+	public static String getUsername() {
+		String url = prop.getProperty("username");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("username"
+					+ " not specified in the Configuration.properties file.");
+	}
+	
+	public static String getPassword() {
+		String url = prop.getProperty("password");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("password"
+					+ " not specified in the Configuration.properties file.");
 	}
 	
 	
