@@ -30,7 +30,7 @@ import com.LMS.utility.ExcelUtils;
 public class login_Page {
 	
 	WebDriver driver;
-	private final static Logger LOG = LogManager.getLogger(login_Page.class);
+	//private final static Logger LOG = LogManager.getLogger(login_Page.class);
 	String url=com.LMS.utility.ConfigReader.getApplicationUrl();
 	String wrongurl=com.LMS.utility.ConfigReader.getwrongApplicationUrl();
 	String title = com.LMS.utility.ConfigReader.getHomePageTitle();
@@ -41,9 +41,8 @@ public class login_Page {
 	HttpURLConnection urlConnectioCheck = null;
 	long navigationTime;
 	
-	
+	@FindBy(xpath="//*[@href='https://www.heroku.com/home']")WebElement errorinvalidURL;
 	@FindBy(xpath="//input[@id='username']")WebElement usernametxtbox;	
-	//@FindBy(xpath="//label[@for ='username']")WebElement labelUsername;
 	@FindBy(xpath="//*[@id ='mat-form-field-label-1']")WebElement usernameAstrick;
 	@FindBy(xpath="//*[@id='mat-form-field-label-3']")WebElement passwordAstrick;
 	@FindBy(xpath="//input[@id='password']")WebElement passwordtxtbox;
@@ -55,7 +54,7 @@ public class login_Page {
 	@FindBy(xpath="//*[@id='errormessage']") WebElement invalidLoginError;
 	@FindBy(xpath="//*[@id='mat-error-0']")WebElement enterUserNameError;
 	@FindBy(xpath="//*[@id='mat-error-1']")WebElement enterPasswordError;
-	//*[@src='assets/img/LMS-logo.jpg']
+	
 	
 	public login_Page(WebDriver driver) {
 		this.driver = driver;
@@ -64,6 +63,11 @@ public class login_Page {
 	
 	public void openLMSHomePage() {
 		driver.get(url);
+	}
+	
+	public boolean validateerrorinvalidURL() {
+		
+		return driver.getTitle().contains("Heroku | Application Error");
 	}
 	
 	public String validatelmsappText() {
@@ -85,49 +89,39 @@ public class login_Page {
 		CommonUtils.webSendKeys(passwordtxtbox,validPassword);
 		long startTime = System.currentTimeMillis();
 		CommonUtils.webElement_Click(loginbtn);
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		long endTime = System.currentTimeMillis();
 		navigationTime = (endTime - startTime);
 	}
-	
 	
 	public long navigationTime() {
 		return navigationTime;
 	}
 	
-	
 	public void loginUsingKeyboardKey(String Sheetname,Integer rownumber) throws InvalidFormatException, IOException, InterruptedException
-	{
-		
+	{		
 		List<Map<String, String>> testdata = excel.getData(Excelpath, Sheetname);
 		String username=testdata.get(rownumber).get("username");
 		String password=testdata.get(rownumber).get("password");
 		usernametxtbox.clear();
 		CommonUtils.webSendKeys(usernametxtbox, username);
 		passwordtxtbox.clear();
-		Actions actions = new Actions(driver);
 		CommonUtils.webSendKeys(passwordtxtbox,password);
+		Actions actions = new Actions(driver);
 		actions.sendKeys(Keys.ENTER).perform();
-		//Thread.sleep(3000);
+		Thread.sleep(5000);
 	}
 	
-	
-	
 	public void fillvalidAndInvalidCredentials(String Sheetname,Integer rownumber) throws InvalidFormatException, IOException, InterruptedException {
-		//List<Map<String,String>> testData = excelReader.getData(ExcelFilePath, Sheetname);
 		List<Map<String, String>> testdata = excel.getData(Excelpath, Sheetname);
 		String username=testdata.get(rownumber).get("username");
 		String password=testdata.get(rownumber).get("password");
-		loginUsingValidDetails(username,password);
-				
+		loginUsingValidDetails(username,password);				
 	}
 		
-
 	public String validateDashboardlandingPage() {
 		return CommUtil.getElementText(manageProgramHeader);
 	}
-	
-
 	
 	public void enterUsernameClickLogin(String username) throws InterruptedException {
 		CommonUtils.webElement_Click(usernametxtbox);
@@ -146,15 +140,12 @@ public class login_Page {
 		Actions actions = new Actions(driver);
 		actions.sendKeys(Keys.BACK_SPACE).perform();
 		Thread.sleep(3000);
-		CommonUtils.webElement_Click(loginbtn);	
-		
+		CommonUtils.webElement_Click(loginbtn);			
 	}
 	
 	public void enterPasswrdClickLogin() throws InterruptedException{
-		//usernametxtbox.clear();
 		CommonUtils.webElement_Click(passwordtxtbox);	
 		Thread.sleep(3000);
-		//CommonUtils.webSendKeys(passwordtxtbox, password);
 		CommonUtils.webElement_Click(loginbtn);		
 	}
 	
@@ -166,7 +157,6 @@ public class login_Page {
 		return enterPasswordError.getText().contains("Please enter your password");	
 	}
 	
-	
 	public boolean isUserTextPresent(String text) {	
 		return usernameAstrick.getText().contains(text);	
 	}
@@ -174,17 +164,32 @@ public class login_Page {
 	public boolean isPasswordTextPresent(String pwdtext) {	
 		return passwordAstrick.getText().contains(pwdtext);	
 	}
-	
-	
+		
 	public boolean validateLoginBtn() {
 		 return loginbtn.isDisplayed();	
 	}
 	
 	public boolean verifyButtonAlignment()
 	{
-		String script = "arguments[0].style.textAlign='center';";
+		String script = "arguments[0].style.text-Align='center';";
 	       boolean loginButtonAlignment = (boolean) ((JavascriptExecutor)driver).executeScript(script, loginbtn);
 	       return loginButtonAlignment;
+	}
+	
+	public void getLeftAllignment()
+	{
+		String elementLocation = loginbtn.getCssValue("text-align");
+		System.out.println("elementLocation:"+elementLocation);
+		if(elementLocation.equals("left") || elementLocation.equals("center") || elementLocation.equals("right"))
+		{
+			System.out.println("Iam in ifstatemet");
+
+		 //System.out.println("Left Field alignment detected!");
+		 
+		 }
+		else
+			System.out.println("Iam in esle");
+
 	}
 	
 	public String verifyURLNotBroken(int statusCode){
@@ -202,7 +207,6 @@ public class login_Page {
 				System.out.println(url+"---------"+con.getResponseMessage()+" ---- is valid");
 				errorMessage="URL is valid link.";
 			}
-			//return errorMessage;
 		}
 		catch(MalformedURLException e)
 		{
@@ -230,18 +234,13 @@ public class login_Page {
 	      String passwordColorinHex = Color.fromString(passwordTextColor).asHex();
 	      return passwordColorinHex;
 	}
-		
-	
+			
 	public boolean verifytextboxLMSHome() {
 		if (usernametxtbox.isDisplayed()&& passwordtxtbox.isDisplayed())
 			 return true;
 		else
 			return false;	 
-		}
-	
-	
-	
-	
+		}	
 }
 	
 	

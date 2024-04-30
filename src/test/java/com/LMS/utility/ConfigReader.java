@@ -97,7 +97,5 @@ public class ConfigReader {
 		else
 			throw new RuntimeException("password"
 					+ " not specified in the Configuration.properties file.");
-	}
-	
-	
+	}	
 }
