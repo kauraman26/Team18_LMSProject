@@ -98,4 +98,12 @@ public class ConfigReader {
 			throw new RuntimeException("password"
 					+ " not specified in the Configuration.properties file.");
 	}	
+	
+	public static String getcorrepondingUrl(String correspUrl) {
+		String correspondingUrl = prop.getProperty(correspUrl);
+		if (correspondingUrl != null)
+			return correspondingUrl;
+		else
+			throw new RuntimeException("url not specified in the Configuration.properties file.");
+	}
 }
