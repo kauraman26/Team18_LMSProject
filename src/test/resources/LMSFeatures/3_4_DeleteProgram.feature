@@ -1,8 +1,6 @@
 @DeleteProgram 
 Feature: Program Page Verification
 
-#Background: Admin is on Dashboard page 
-#Given Admin in Dashboard Page 
 
 @TS_Program_Delete_01
 Scenario Outline: Delete Program Feature validation
@@ -78,3 +76,14 @@ Examples:
 ||last|1|
 ||first|5|
 
+@TS_Program_Delete_Navigation_07
+Scenario Outline: Navigation Validation from Manage Program to other Pages
+Given Admin is on Manage Program page for "<testcase>"
+When Admin clicks on "<navigation>" link
+Then Admin redirected to "<target>" page
+
+Examples:
+|testcase|navigation|target|
+||batchLink|Manage Batch|
+||userLink|Manage User|
+||logoutLink|home|

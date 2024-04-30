@@ -74,6 +74,7 @@ public class DeleteProgram_SD {
 		
 		testRow = applicationData.getData(PROGRAM_SHEET_NAME,testcase);
 		if(!programPage.getAlertPageTitle()) {
+			System.out.println("In Title Page:"+ programPage.getAlertPageTitle());
 			programPage.searchanddeleteBtn(applicationData.getProgramName());
 		}
 		//Assert.assertTrue(programPage.getAlertPageTitle());
@@ -172,8 +173,8 @@ public class DeleteProgram_SD {
 		programPage.clickNavigation(navigation);
 	}
 	
-	@Then("Admin is redirected to {string} page")
-	public void admin_is_redirected_to_page(String target) {
+	@Then("Admin redirected to {string} page")
+	public void admin_redirected_to_page(String target) {
 		
 		Assert.assertTrue(programPage.validateNavigation(target));
 	}

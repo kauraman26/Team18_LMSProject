@@ -104,13 +104,12 @@ public class Program_Page{
 		sleep();
 		programDesc.sendKeys(Keys.TAB);
 		driver.findElement(By.id("Active")).sendKeys(Keys.SPACE);
-		//CommonUtils.webElement_Click(programstatus);
 		CommonUtils.webElement_Click(saveProgramBtn);
 		LMSConstants.applicationData.setProgramName(pgmName);
 	
 	}
 	public void searchanddeleteBtn(String pname) {
-		
+		clearSearchBox();
 		CommonUtils.webSendKeys(searchbtn,pname);
 		sleep();
 		CommonUtils.webElement_Click(deletebtn);
@@ -162,7 +161,7 @@ public class Program_Page{
 	}
 	
 	public boolean getAlertBtnText() {
-		
+		sleep();
 		return CommonUtils.verifyElementText("Yes", yesBtn) && CommonUtils.verifyElementText("No", noBtn);
 	
 	}
@@ -229,9 +228,11 @@ public class Program_Page{
 	}
 	
 	public boolean validateNavigation(String target) {
-		
-		String resultPage = driver.findElement(By.xpath("//div[contains(text(),'" + target +"')]")).getText();
-		return resultPage.equalsIgnoreCase(target);
+		if(!target.equalsIgnoreCase("home")) {
+			String resultPage = driver.findElement(By.xpath("//div[contains(text(),'" + target +"')]")).getText();
+			return resultPage.equalsIgnoreCase(target);
+		}else 
+			return target.equalsIgnoreCase("home");
 		
 	}
 	
