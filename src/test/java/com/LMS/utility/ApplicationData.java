@@ -1,12 +1,23 @@
 package com.LMS.utility;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ApplicationData {
 	
 	private Map<String, List<Map<String,String>>> applicationData;
+	public String programName;
 	
+	
+	public String getProgramName() {
+		return programName;
+	}
+
+	public void setProgramName(String programName) {
+		this.programName = programName;
+	}
+
 	private  boolean userLoggedIn;
 	
 
@@ -26,7 +37,8 @@ public class ApplicationData {
 	public void setUserLoggedIn(boolean userLoggedIn) {
 		this.userLoggedIn = userLoggedIn;
 	}
-
+	
+	
 
 	public Map<String,String> getData(String sheetName, String testCase){
 		for(Map<String,String> row : applicationData.get(sheetName)) {

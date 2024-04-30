@@ -23,8 +23,8 @@ Then Admin can see the deletion alert disappears without any changes
 
 Examples:
 |testcase|button|
-|deleteprogram_01|Close|
-|deleteprogram_01|No|
+||Close|
+||No|
 
 
 @TS_Program_Delete_03
@@ -34,25 +34,47 @@ When Admin clicks "<button>" button on the alert
 Then Admin gets a message "Successful" alert and able to see that program deleted in the data table
 Examples:
 |testcase|button|
-|deleteprogram_01|Yes|
+||Yes|
 
 @TS_Program_Delete_04
-Scenario Outline: Multiple delete Program validation
+Scenario Outline: Single or Multiple delete Program validation
 Given Admin is on Manage Program page for "<testcase>"
-When Admin clicks any checkbox in the data table
+When Admin clicks "<type>" checkbox in the data table
 Then Admin should see common delete option enabled under header Manage Program
-Examples:
-|testcase|button|
-|deleteprogram_01|Yes|
+When Admin clicks on common delete button
+Then Admin should see a alert open with heading "Confirm" along with  <YES> and <NO> button for deletion
+When Admin clicks "Yes" button on the alert
+Then Admin gets a message "Successful" alert and able to see that program deleted in the data table
 
-@TS_Program_Delete_05
-Scenario Outline: Validate multiple program deletion by selecting Single checkbox
-Given Admin is on Confirm Deletion alert
-When Admin clicks "<button>" button on the alert
-Then Admin should land on Manage Program page and can see the selected program is deleted from the data table
-And Admin should land on Manage Program page and can see the selected program is not deleted from the data table
 
 Examples:
-|button|
-|Yes|
-|No|
+|testcase|type|
+||Single|
+||Multiple|
+
+@TS_Program_Delete_sorting_05
+Scenario Outline: Sort Program validation
+Given Admin is on Manage Program page for "<testcase>"
+When Admin clicks "<headerName>" link at "<order>"
+Then Datatable should be arranged in "<order>"
+Examples:
+|testcase|headerName|order|
+||programName|asc|
+||programName|dsc|
+||programDescription|asc|
+||programDescription|dsc|
+||programStatus|asc|
+||programStatus|dsc|
+
+@TS_Program_Delete_Navigation_06
+Scenario Outline: Navigation Program validation
+Given Admin is on Manage Program page for "<testcase>"
+When Admin clicks "<nextPage>" pagelink at <currentPage>
+Then <currentPage> should be enabled and "<nextPage>" should be disabled
+Examples:
+|testcase|nextPage|currentPage|
+||next|1|
+||previous|2|
+||last|1|
+||first|5|
+
