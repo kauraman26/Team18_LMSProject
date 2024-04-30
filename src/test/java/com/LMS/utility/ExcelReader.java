@@ -43,7 +43,7 @@ public class ExcelReader {
 					for (int k = 0; k < row.getLastCellNum(); k++) {
 
 						Cell cell = row.getCell(k);
-						String cellValue = cell.getStringCellValue();
+						String cellValue = cell!= null ? cell.getStringCellValue():null;
 						String key = headerRow.getCell(k).getStringCellValue();
 						record.put(key, cellValue);
 					}
@@ -65,5 +65,5 @@ public class ExcelReader {
 		}
 		return sheetNameRowsMap;
 	}
-
+	
 }
