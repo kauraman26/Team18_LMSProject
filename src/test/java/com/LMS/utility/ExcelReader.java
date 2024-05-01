@@ -9,12 +9,14 @@ import java.util.Map;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelReader {
+
 
 	public static Map<String, List<Map<String, String>>> loadExcelData() {
 
@@ -43,7 +45,7 @@ public class ExcelReader {
 					for (int k = 0; k < row.getLastCellNum(); k++) {
 
 						Cell cell = row.getCell(k);
-						String cellValue = cell!= null ? cell.getStringCellValue():null;
+						String cellValue = cell!= null ? cell.getCellType()==CellType.NUMERIC ? ((long)cell.getNumericCellValue() + "") : cell.getStringCellValue():null;
 						String key = headerRow.getCell(k)!=null? headerRow.getCell(k).getStringCellValue():"";
 						record.put(key, cellValue);
 					}

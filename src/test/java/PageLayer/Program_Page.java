@@ -95,7 +95,7 @@ public class Program_Page{
 		Map<String, String> testdatabyTC = LMSConstants.applicationData.getData(sheetname, testcase);
 		
 		long d = System.currentTimeMillis();
-		String pgmName = testdatabyTC.get("programName")+" "+d;
+		String pgmName = testdatabyTC.get("programName")!= null? testdatabyTC.get("programName")+" "+d:null;
 		String pgmDesc = testdatabyTC.get("programDescription");
 		CommonUtils.webElement_Click(newpgmbtn);
 		System.out.println("programName " +pgmName);
