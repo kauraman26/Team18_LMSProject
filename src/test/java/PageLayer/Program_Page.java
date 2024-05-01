@@ -82,7 +82,11 @@ public class Program_Page{
 		Map<String, String> testdatabyrow = LMSConstants.applicationData.getData(Sheetname, row);
 		String username=testdatabyrow.get("username");
 		String password=testdatabyrow.get("password");
-		programLogin.loginUsingValidDetails(username,password);
+		try {
+			programLogin.loginUsingValidDetails(username,password);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		LMSConstants.applicationData.setUserLoggedIn(true);		
 	}
 	
@@ -150,7 +154,7 @@ public class Program_Page{
 	
 	public boolean getAlertPageTitle() {
 		try {
-		return CommonUtils.verifyElementText("Confirm", confirmlabel);
+			return CommonUtils.verifyElementText("Confirm", confirmlabel);
 		}catch(Exception e) {
 			return false;
 		}

@@ -44,7 +44,7 @@ public class ExcelReader {
 
 						Cell cell = row.getCell(k);
 						String cellValue = cell!= null ? cell.getStringCellValue():null;
-						String key = headerRow.getCell(k).getStringCellValue();
+						String key = headerRow.getCell(k)!=null? headerRow.getCell(k).getStringCellValue():"";
 						record.put(key, cellValue);
 					}
 

@@ -7,17 +7,21 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import com.LMS.factory.DriverFactory;
+import com.LMS.utility.ApplicationData;
 import com.LMS.utility.ConfigReader;
+import com.LMS.utility.ExcelReader;
+import com.LMS.utility.LMSConstants;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 
 public class ApplicationHooks {
 	
 	ConfigReader configReader = new ConfigReader();
-	Properties prop;
+	static Properties prop;
 	DriverFactory driverFactory = new DriverFactory();	
 	public static WebDriver driver;
 	//public  WebDriver driver = DriverFactory.getDriver();
