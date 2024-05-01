@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ConfigReader {
 	
-	private static Properties prop;
+	private static Properties prop = init_prop();
 	private final static String propertyFilePath = "./src/test/resources/config/config.properties";
 
 	/**
@@ -28,6 +28,11 @@ public class ConfigReader {
 		}
 
 		return prop;
+	}
+	public static String getProperty(String propName) {
+		
+		
+		return prop.getProperty(propName);
 	}
 	
 	public static String getApplicationUrl() {
@@ -104,6 +109,6 @@ public class ConfigReader {
 		if (correspondingUrl != null)
 			return correspondingUrl;
 		else
-			throw new RuntimeException("url not specified in the Configuration.properties file.");
+			throw new RuntimeException("url not specified in the Configuration.propertiesÂ file.");
 	}
 }
