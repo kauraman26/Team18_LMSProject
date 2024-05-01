@@ -21,12 +21,19 @@ public class ApplicationHooks {
 	DriverFactory driverFactory = new DriverFactory();	
 	public static WebDriver driver;
 	//public  WebDriver driver = DriverFactory.getDriver();
-	
+
+	@BeforeAll
+	public static void before_all() {
+		prop= ConfigReader.init_prop();
+		ApplicationData appData = new ApplicationData();
+		appData.setApplicationData(ExcelReader.loadExcelData());
+		LMSConstants.applicationData = appData;
+	}
     @Before
     public void beforeScenario() {
     	
     	try {
-    		prop = configReader.init_prop();
+    		//prop = configReader.init_prop();
     	
     	if(driver== null) {
     		String browserName = prop.getProperty("browser");
