@@ -6,10 +6,11 @@ import io.cucumber.testng.CucumberOptions;
 
 //@RunWith(Cucumber.class)
 @CucumberOptions(
-		plugin = {"pretty","html:target/cucumber.html",
+		plugin = {"pretty","html:target/cucumberHtml-Report/LMSCucumberReport.html",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 				},
+				
 		monochrome=true,  //console output color
 		features = "src/test/resources/LMSFeatures", //location of feature files
 		glue= {"stepDefinitions","AppHooks"} )
