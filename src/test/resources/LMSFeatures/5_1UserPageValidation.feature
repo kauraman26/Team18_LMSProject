@@ -1,4 +1,4 @@
-Feature: Home Page Verification
+Feature: User Page Verification
 
   @TS_login_01
   Scenario: Verify admin is able to land on home page
