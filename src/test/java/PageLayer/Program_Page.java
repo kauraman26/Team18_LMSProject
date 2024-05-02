@@ -109,7 +109,9 @@ public class Program_Page{
 		if(pgmName != null) {
 			CommonUtils.webSendKeys(programName,pgmName);
 		}
-		CommonUtils.webSendKeys(programDesc,pgmDesc);
+		if(pgmDesc != null) {
+			CommonUtils.webSendKeys(programDesc,pgmDesc);
+		}
 		sleep();
 		programDesc.sendKeys(Keys.TAB);
 		driver.findElement(By.id("Active")).sendKeys(Keys.SPACE);
