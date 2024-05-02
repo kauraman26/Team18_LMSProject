@@ -7,14 +7,14 @@ import java.util.Properties;
 
 public class ConfigReader {
 	
-	private static Properties prop;
+	private static Properties prop = init_prop();
 	private final static String propertyFilePath = "./src/test/resources/config/config.properties";
 
 	/**
 	 * This method is used to load the properties from config.properties file
 	 * @return it returns Properties prop object
 	 */
-	public Properties init_prop() {
+	public static Properties init_prop() {
 
 		prop = new Properties();
 		try {
@@ -29,6 +29,11 @@ public class ConfigReader {
 
 		return prop;
 	}
+	public static String getProperty(String propName) {
+		
+		
+		return prop.getProperty(propName);
+	}
 	
 	public static String getApplicationUrl() {
 		String url = prop.getProperty("url");
@@ -36,6 +41,15 @@ public class ConfigReader {
 			return url;
 		else
 			throw new RuntimeException("url not specified in the Configuration.properties file.");
+	}
+	
+	
+	public static String getwrongApplicationUrl() {
+		String url = prop.getProperty("wrongurl");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("wrongurl not specified in the Configuration.properties file.");
 	}
 	
 	public static String getHomePageTitle() {
@@ -64,5 +78,37 @@ public class ConfigReader {
 			throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
 	}
 	
+	public static String getexcelfilepath1() {
+		String excelfilelpath = prop.getProperty("excelfilepath1");
+		if (excelfilelpath != null)
+			return excelfilelpath;
+		else
+			throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
+	}
 	
+	public static String getUsername() {
+		String url = prop.getProperty("username");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("username"
+					+ " not specified in the Configuration.properties file.");
+	}
+	
+	public static String getPassword() {
+		String url = prop.getProperty("password");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("password"
+					+ " not specified in the Configuration.properties file.");
+	}	
+	
+	public static String getcorrepondingUrl(String correspUrl) {
+		String correspondingUrl = prop.getProperty(correspUrl);
+		if (correspondingUrl != null)
+			return correspondingUrl;
+		else
+			throw new RuntimeException("url not specified in the Configuration.properties file.");
+	}
 }

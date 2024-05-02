@@ -26,13 +26,8 @@ public class DriverFactory {
 		System.out.println("browser value is: " + browser);
 
 		if (browser.equals("chrome")) {
-			//WebDriverManager.chromedriver().driverVersion("115.0.5790.170").setup();
 			WebDriverManager.chromedriver().setup();
 			tlDriver.set(new ChromeDriver());
-			
-			
-			//driver= new ChromeDriver(chromeOptions);
-			
 		} else if (browser.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			tlDriver.set(new FirefoxDriver());
@@ -41,11 +36,9 @@ public class DriverFactory {
 		} else {
 			System.out.println("Please pass the correct browser value: " + browser);
 		}
-
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 		return getDriver();
-
 	}
 
 	/**
@@ -56,5 +49,4 @@ public class DriverFactory {
 	public static synchronized WebDriver getDriver() {
 		return tlDriver.get();
 	}
-
 }

@@ -84,18 +84,22 @@ public class CommonUtils {
 	
 
 	
-	public String getElementText(WebElement element) {
+	public static String getElementText(WebElement element) {
 		WebElement textElement = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(element));
 		return textElement.getText();
 	}
 
-	public boolean verifyElementText(String expectedMsg, WebElement element) {
+	public static boolean verifyElementText(String expectedMsg, WebElement element) {
 		if (getElementText(element).equals(expectedMsg)) {
 			return true;
 		}
 
 		return false;
+	}
+	
+	public static String ActualPageTitle() {
+		return driver.getTitle();
 	}
 
 	
