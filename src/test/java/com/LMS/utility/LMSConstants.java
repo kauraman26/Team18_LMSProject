@@ -12,6 +12,9 @@ public class LMSConstants {
 	public static ApplicationData applicationData;
 	
 	public static String LOGIN_SHEET_NAME="Login";
+	public static String BATCH_SHEET_NAME="Batch";
+	public static String USER_SHEET_NAME="User";
+	
 	
 	
 }

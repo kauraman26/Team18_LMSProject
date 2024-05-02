@@ -53,7 +53,7 @@ public class ExcelUtils {
 				String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
 						.getStringCellValue();
 
-				columnMapdata.put(columnHeaderName, cell.getStringCellValue());
+				columnMapdata.put(columnHeaderName, getStringCellValue(cell));
 			}
 
 			excelRows.add(columnMapdata);

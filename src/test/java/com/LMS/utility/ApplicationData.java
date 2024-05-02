@@ -7,7 +7,9 @@ import java.util.Map;
 public class ApplicationData {
 	
 	private Map<String, List<Map<String,String>>> applicationData;
-	public String programName;
+	private String programName;
+	
+	private String batchName;
 	
 	
 	public String getProgramName() {
@@ -39,6 +41,16 @@ public class ApplicationData {
 	}
 	
 	
+	
+	
+
+	public String getBatchName() {
+		return batchName;
+	}
+
+	public void setBatchName(String batchName) {
+		this.batchName = batchName;
+	}
 
 	public Map<String,String> getData(String sheetName, String testCase){
 		for(Map<String,String> row : applicationData.get(sheetName)) {
