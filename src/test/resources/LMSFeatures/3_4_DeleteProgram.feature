@@ -1,5 +1,5 @@
 @DeleteProgram 
-Feature: Program Page Verification
+Feature: Delete Program Page Verification
 
 
 @TS_Program_Delete_01

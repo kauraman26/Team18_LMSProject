@@ -106,7 +106,9 @@ public class Program_Page{
 		String pgmDesc = testdatabyTC.get("programDescription");
 		CommonUtils.webElement_Click(newpgmbtn);
 		System.out.println("programName " +pgmName);
-		CommonUtils.webSendKeys(programName,pgmName);
+		if(pgmName != null) {
+			CommonUtils.webSendKeys(programName,pgmName);
+		}
 		CommonUtils.webSendKeys(programDesc,pgmDesc);
 		sleep();
 		programDesc.sendKeys(Keys.TAB);
