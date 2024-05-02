@@ -43,8 +43,8 @@ public class User_SD {
 		
 	}
 
-	@Then("Admin should see the {string} in the URL")
-	public void admin_should_see_the_in_the_url(String User) throws InterruptedException {
+	@Then("Admin should see the {string} in the URL for user")
+	public void admin_should_see_the_in_the_url_for_user(String User) throws InterruptedException {
 
 		String url = user.URL();
 
@@ -71,7 +71,7 @@ public class User_SD {
 
 	}
 
-	@Then("Admin should see a Delete button on the top left hand side as Disabled")
+	@Then("Admin should see a Delete button on the top left hand side as Disabled_for_user")
 	public void admin_should_see_a_delete_button_on_the_top_left_hand_side_as_disabled() {
 		Assert.assertTrue(user.verifyDelIcon());
 
@@ -144,8 +144,8 @@ public class User_SD {
 		user.cls();
 	}
 	
-	@When("Admin clicks {string} button")
-	public void admin_clicks_button(String addbutton) {
+	@When("Admin clicks {string} button for user")
+	public void admin_clicks_button_for_user(String addbutton) {
 	    user.addNewUser(addbutton);
 	}
 

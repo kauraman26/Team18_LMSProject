@@ -33,7 +33,7 @@ Feature: Home Page Verification
     Then Admin Should see the data table with column name "Phone Number" at postition 5
     Then Admin Should see the data table with column name "Edit / Delete" at postition 6
     Then Wait for 2000 ms
-    Then Admin should see a Delete button on the top left hand side as Disabled
+    Then Admin should see a Delete button on the top left hand side as Disabled for user
     Then Admin should be able to see the "new" button at position 1 with text "Add New User" button above the data table
     Then Admin should be able to see the "Assign" button at position 2 with text "Assign Staff" button above the data table
     Then Admin should be able to see the "Assign" button at position 1 with text "Assign Student" button above the data table
