@@ -7,18 +7,34 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import com.LMS.factory.DriverFactory;
+import com.LMS.utility.ApplicationData;
 import com.LMS.utility.ConfigReader;
+import com.LMS.utility.ExcelReader;
+import com.LMS.utility.ExcelUtils;
+import com.LMS.utility.LMSConstants;
+import com.LMS.utility.LoggerLoad;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 
 public class ApplicationHooks {
 	
-	ConfigReader configReader = new ConfigReader();
-	Properties prop;
+	//ConfigReader configReader = new ConfigReader();
+	static Properties prop;
 	DriverFactory driverFactory = new DriverFactory();
+	public static WebDriver driver;
+	
+	@BeforeAll
+	public static void before_all() {
+		prop= ConfigReader.init_prop();
+		ApplicationData appData = new ApplicationData();
+		appData.setApplicationData(ExcelReader.loadExcelData());
+		LMSConstants.applicationData = appData;
+	}
+	
 	
 	/*private DriverFactory driverFactory;
 	private WebDriver driver;
@@ -54,7 +70,7 @@ public class ApplicationHooks {
 		}
 	}*/
 	
-	public static WebDriver driver;
+	
 	//private static final Logger LOG=LogManager.getLogger(Hooks.class);
 	
     @Before
@@ -62,7 +78,7 @@ public class ApplicationHooks {
     	
     	try {
     		//CommonUtils.loadProperties();
-    		prop = configReader.init_prop();
+    		//prop = configReader.init_prop();
     	
     	if(driver== null) {
     		String browserName = prop.getProperty("browser");
@@ -96,14 +112,7 @@ public class ApplicationHooks {
         return driver;
     }
 
-//    @AfterAll
-//    public static void closeBrowser() {
-//        if (driver != null) {
-//            driver.quit();
-//            LOG.info("Browser session closed.");
-//        }
-//    }
-
+    
 
 
 }

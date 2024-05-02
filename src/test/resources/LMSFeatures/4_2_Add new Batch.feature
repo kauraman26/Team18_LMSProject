@@ -1,31 +1,54 @@
-
 Feature: Add new Batch
 
- Background: 
-   Given user is logged on LMS portal
-   When  Admin clicks "Batch" from navigation bar and clicks "+ A New Batch" button
-   Then  A new pop up with Batch details appears
-   
-  @tag1
-  Scenario: Check if the fields exist in pop
-    Given A new pop up with Batch details appears
-    Then The pop up should include the fields Name, Number of classes and Description as text box,Program Name as drop down and Status as radio button
-         
+  @AddBatch1
+  Scenario Outline: Check if the fields exist in pop
+    Given A new pop up with a Batch details appears
+    Then The pop up should include all "<Fields>"
 
+    Examples: 
+      | Fields        |
+      | Name          |
+      | Description   |
+      | Program Name  |
+      | Status        |
+      | No Of Classes |
 
-   @tag2
-  Scenario: Check if description is optional field
+  @AddBatch2
+  Scenario Outline: Check if description is optional field
     Given A new pop up with Batch details appears
-    When Fill in all the fields except description with valid values and click save
-      | Batch021 |
-      | as |
-      | 17 |   
+    When Fill in all the fields except description with valid values from excel "<SheetName>" and <RowNumber> and click save
     Then The newly added batch should be present in the data table in Manage Batch page
 
-    Scenario: Check if the program details are added in data table
-     Given A new pop up with Batch details appears
-     When Fill in all the fields with valid values and click save
-     | Batch022 |
-      | SDET |
-      | 20 | 
-     Then The newly added batch should be present in the data table in Manage Batch page
+    Examples: 
+      | SheetName | RowNumber |
+      | Batch     |         0 |
+
+  @AddBatch3
+  Scenario Outline: Check if the program details are added in data table
+    Given A new pop up with Batch details appear
+    When Fill in all the fields with valid values from excel "<SheetName>" and <RowNumber> and click save
+    Then The newly added batch should be present in the data table in Manage Batch page
+
+    Examples: 
+      | SheetName | RowNumber |
+      | Batch     |         1 |
+
+  @AddBatch4
+  Scenario Outline: Check for error messages for invalid fields
+    Given A new pop up with Batch details appear
+    When Any of the fields have invalid values from excel "<SheetName>" and <RowNumber>
+    Then Error message should appear
+
+    Examples: 
+      | SheetName | RowNumber |
+      | Batch     |         2 |
+
+  @AddBatch5
+  Scenario Outline: Check for error messages for mandatory fields
+    Given A new pop up Batch details appear
+    When Any of the mandatory fields are blank from excel "<SheetName>" and <RowNumber>
+    Then Error message should appear
+
+    Examples: 
+      | SheetName | RowNumber |
+      | Batch     |         3 |

@@ -3,15 +3,20 @@ package com.LMS.utility;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.util.NumberToTextConverter;
 
 
 public class ExcelUtils {
@@ -49,8 +54,7 @@ public class ExcelUtils {
 
 				String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
 						.getStringCellValue();
-
-				columnMapdata.put(columnHeaderName, cell.getStringCellValue());
+				columnMapdata.put(columnHeaderName, getStringCellValue(cell));
 			}
 
 			excelRows.add(columnMapdata);
@@ -58,10 +62,43 @@ public class ExcelUtils {
 
 		return excelRows;
 	}
+	
+	public static String getStringCellValue(Cell cell) {
+	    try {
+	        switch (cell.getCellType()) {
+	            case FORMULA:
+	                try {
+	                    return NumberToTextConverter.toText(cell.getNumericCellValue());
+	                } catch (NumberFormatException e) {
+	                    return cell.getStringCellValue();
+	                }
+	            case NUMERIC:
+	                return NumberToTextConverter.toText(cell.getNumericCellValue());
+	            case STRING:
+	                String cellValue = cell.getStringCellValue().trim();
+	                String pattern = "\\^\\$?-?([1-9][0-9]{0,2}(,\\d{3})*(\\.\\d{0,2})?|[1-9]\\d*(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^-?\\$?([1-9]\\d{0,2}(,\\d{3})*(\\.\\d{0,2})?|[1-9]\\d*(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))$|^\\(\\$?([1-9]\\d{0,2}(,\\d{3})*(\\.\\d{0,2})?|[1-9]\\d*(\\.\\d{0,2})?|0(\\.\\d{0,2})?|(\\.\\d{1,2}))\\)$";
+	                if (((Pattern.compile(pattern)).matcher(cellValue)).find()) {
+	                    return cellValue.replaceAll("[^\\d.]", "");
+	                }
+	                return cellValue.trim();
+	            case BOOLEAN:
+	                return String.valueOf(cell.getBooleanCellValue());
+	            case ERROR:
+	                return null;
+	            default:
+	                return cell.getStringCellValue();
+	        }
+	    } catch (Exception e) {
+	        if (e.getLocalizedMessage() != null)
+	            return "";
+	    }
+	    return "";
+	}
 
 	public int countRow() {
 
 		return totalRow;
 	}
-
+	
 }
+

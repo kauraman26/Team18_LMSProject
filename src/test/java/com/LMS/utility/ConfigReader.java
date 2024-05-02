@@ -6,15 +6,16 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
-	
-	private static Properties prop;
+
+	private static Properties prop = init_prop();
 	private final static String propertyFilePath = "./src/test/resources/config/config.properties";
 
 	/**
 	 * This method is used to load the properties from config.properties file
+	 * 
 	 * @return it returns Properties prop object
 	 */
-	public Properties init_prop() {
+	public static Properties init_prop() {
 
 		prop = new Properties();
 		try {
@@ -29,7 +30,12 @@ public class ConfigReader {
 
 		return prop;
 	}
-	
+
+	public static String getProperty(String propName) {
+
+		return prop.getProperty(propName);
+	}
+
 	public static String getApplicationUrl() {
 		String url = prop.getProperty("url");
 		if (url != null)
@@ -37,16 +43,15 @@ public class ConfigReader {
 		else
 			throw new RuntimeException("url not specified in the Configuration.properties file.");
 	}
-	
+
 	public static String getHomePageTitle() {
 		String url = prop.getProperty("homePageTitle");
 		if (url != null)
 			return url;
 		else
-			throw new RuntimeException("homeURL"
-					+ " not specified in the Configuration.properties file.");
+			throw new RuntimeException("homeURL" + " not specified in the Configuration.properties file.");
 	}
-	
+
 	public static String getDashboardHeader() {
 		String url = prop.getProperty("dashboardHeader");
 		if (url != null)
@@ -54,8 +59,15 @@ public class ConfigReader {
 		else
 			throw new RuntimeException("url not specified in the Configuration.properties file.");
 	}
-	
-	
+
+	public static String getBatchUrl() {
+		String url = prop.getProperty("batchUrl");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException("url not specified in the Configuration.properties file.");
+	}
+
 	public static String getexcelfilepath() {
 		String excelfilelpath = prop.getProperty("excelfilepath");
 		if (excelfilelpath != null)
@@ -63,6 +75,5 @@ public class ConfigReader {
 		else
 			throw new RuntimeException("Excel file path not specified in the Configuration.properties file.");
 	}
-	
-	
+
 }
