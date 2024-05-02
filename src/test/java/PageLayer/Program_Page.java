@@ -1,5 +1,6 @@
 package PageLayer;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,12 @@ public class Program_Page{
 		@FindBy(id="batch")WebElement batchLink;
 		@FindBy(id="user")WebElement userLink;
 		@FindBy(id="logout")WebElement logoutLink;
+
+		@FindBy(xpath="//span[text()='Cancel']")WebElement cancelbtn;
+		@FindBy(xpath="//span[text()='Save']")WebElement savebtn;
+		@FindBy(xpath="//span[@class='p-dialog-header-close-icon ng-tns-c132-3 pi pi-times']")WebElement crossbtn;
+		@FindBy(xpath="//*[contains(text(),'Successful Program Created')]") WebElement pgmPopSuccessTxt;
+
 		
 		@FindBy(xpath="//button[contains(@class, 'p-highlight')]")WebElement current;
 		@FindBy(xpath="//button[contains(@class, 'p-paginator-next')]")WebElement next;
@@ -207,7 +214,7 @@ public class Program_Page{
 		
 		if("previous".equalsIgnoreCase(nextAction)){
 			currentPage--;
-		}else if("next".equalsIgnoreCase(nextAction)) {
+		}else if("next".equalsIgnoreCase(nextAction)) {   
 			currentPage++;
 		}else if("first".equals(nextAction)) {
 			currentPage = 1;
@@ -237,20 +244,34 @@ public class Program_Page{
 	}
 	
 	@FindBy(xpath="//span[contains(text(),'Program')]")WebElement Programbtn;
-    @FindBy(xpath="//div[contains(text(),'Manage Program')]")WebElement Programheader;
-    @FindBy(xpath="//thead[contains(@class, 'p-datatable-theadd']")WebElement tablehead;
-    
-    @FindBy(xpath = "//button[contains(@class,'p-button-danger p-button p-component p-button-icon-only')]") WebElement dltbtn;
+    	@FindBy(xpath="//div[contains(text(),'Manage Program')]")WebElement Programheader;
+	@FindBy(xpath="//*[contains(@class, 'p-datatable-thead')]")WebElement tablehead;
+   	@FindBy(id="filterGlobal")WebElement searchbox;
+    	@FindBy(xpath="//thead[contains(text(),' Edit / Delete ')]")WebElement editdeletebtn;
+    	@FindBy(xpath="//span[@class='p-paginator-current ng-star-inserted']")WebElement programpagination;
+    	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-right']")WebElement rightarrowbtn;
+	@FindBy(xpath = "//tbody[contains(@class, 'p-datatable-tbody')]") List<WebElement> program_table;
+    	@FindBy(xpath = "//button[contains(@class,'p-button-danger p-button p-component p-button-icon-only')]") WebElement dltbtn;
    	//@FindBy(xpath = "//button[@label='A New Program'] and [@id='pi pi-plus']") WebElement NewProgrambtn;
+   
    	@FindBy(xpath = "//span[contains(text(),'A New Program')]") WebElement NewProgrambtn;
     
    	@FindBy(xpath = "//table/tbody/tr//div[@role='checkbox']") List<WebElement> rows;
    	@FindBy(xpath = "//table/tbody/tr//button[contains(@icon, 'pi-pencil')]") List<WebElement> editicons;
    	@FindBy(xpath = "//table/tbody/tr//button[contains(@icon, 'pi-trash')]") List<WebElement> deleteIcons;
+   	@FindBy(xpath = "//div[contains(@role, 'dialog')]") WebElement programPopup; 
+   	
    	@FindBy(xpath = "//div[contains(@role, 'dialog')]") WebElement ProgramPopup; 
    	@FindBy(xpath = "//span[contains(text(), 'Program Details')]") WebElement Popuptitle;
-   			
-    
+   	@FindBy(xpath="//button[@class='p-button-danger p-button p-component p-button-icon-only']")WebElement delIcon;
+   	@FindBy(xpath="//div/label[(text(),'Name')]")WebElement namepopupvaldiation;
+	@FindBy(xpath="//div[contains(text(),'Description')]")WebElement descvaldiation;
+	@FindBy(xpath="//div[contains(text(),'Status')]")WebElement activecheckvalidation;
+	@FindBy(xpath="//*[contains(text(),'Name')]")WebElement programNameLabel;
+	@FindBy(xpath="//*[contains(text(),'Description')]")WebElement programDescLabel;
+	@FindBy(xpath="//small[@class='p-invalid ng-star-inserted']") List<WebElement> requiredAlerts;
+	@FindBy(id="category")List<WebElement> radioBtns;	
+	
 //    public program_Page(WebDriver driver) {
 //		this.driver = driver;
 //		PageFactory.initElements(driver, this);
@@ -335,19 +356,251 @@ public class Program_Page{
     }
 	
 	public void AddnewProgrambtnclick() {
-		NewProgrambtn.click();
+		CommonUtils.webElement_Click(NewProgrambtn);
 		
 	}
 	
-	public String ValidateNewProgramPopup() {
-	
-    if (ProgramPopup.isDisplayed()) {
-//    	String poptitle = Popuptitle.getText();
-//    	System.out.println("popup title text is: " +poptitle);
-        return Popuptitle.getText();
-    } else {
-        return "";
-    	}
+	public void cancelBtnPgmPopup()
+	{
+		CommonUtils.webElement_Click(cancelbtn);
+		
 	}
 
-}
+	/**
+	 * validate new program popup and return true if and only if all of the below are true
+	 * 1) program name input box is empty
+	 * 2) program description ipput box is empty
+	 * 3) cancel button is displayed
+	 * 4) save button is displayed
+	 * 5) cross button is displayed
+	 * 
+	 */
+
+	public Boolean verifyNewProgramPopupDetails() {
+		Boolean result = Boolean.FALSE;
+	    if (programPopup.isDisplayed()) {
+	    	String pgmNameInputBoxValue = programName.getAttribute("value");
+	    	String pgmDescInputBoxValue = programDesc.getAttribute("value");
+	    	if (pgmNameInputBoxValue.isEmpty() 
+	    			&& pgmDescInputBoxValue.isEmpty()
+	    			&& cancelbtn.isDisplayed()
+	    			&& savebtn.isDisplayed()
+	    			&& crossbtn.isDisplayed()) {
+	    		result = Boolean.TRUE;
+	    	}
+		}
+	    return result;
+	}
+
+	public Boolean verifyNameAndDescInPopupDetails() {
+		Boolean result = Boolean.FALSE;
+		String pgmNameInputBoxType = programName.getAttribute("type");
+    	String pgmDescInputBoxType = programDesc.getAttribute("type");
+ 
+	    if (programPopup.isDisplayed()) {
+	    	if (programNameLabel.isDisplayed() && pgmNameInputBoxType.equals("text")
+	    			&& programDescLabel.isDisplayed() && pgmDescInputBoxType.equals("text")) {
+	    		result = Boolean.TRUE;
+	    	}
+		}
+	    return result;
+	}
+
+	public Boolean verifyRadioButtonsInPopupDetails() {
+		Boolean result = Boolean.FALSE;
+	    if (programPopup.isDisplayed()) {
+	    	if (radioBtns != null 
+	    			&& !radioBtns.isEmpty()
+	    			&& radioBtns.size() == 2) {
+	    		result = Boolean.TRUE;
+	    	}
+		}
+	    return result;
+	}
+
+	public Boolean verifyNewProgramPopupRequiredFields() {
+		Boolean result = Boolean.FALSE;
+	    if (programPopup.isDisplayed()) {
+	    	if (requiredAlerts != null 
+	    				&& !requiredAlerts.isEmpty() 
+	    				&& requiredAlerts.size() == 3) {
+		    	WebElement pgmNameReqAlert = requiredAlerts.get(0);
+		    	WebElement pgmDescReqAlert = requiredAlerts.get(1);
+		    	WebElement pgmStatusReqAlert = requiredAlerts.get(2);
+		    	if (pgmNameReqAlert.isDisplayed()
+		    			&& pgmDescReqAlert.isDisplayed()
+		    			&& pgmStatusReqAlert.isDisplayed()) {
+		    		result = Boolean.TRUE;
+		    	}
+	    	} else {
+	    		result = Boolean.FALSE;
+	    	}
+		}
+	    return result;
+	}
+
+	public Boolean verifyNewProgramPopupNameEntered() {
+		Boolean result = Boolean.FALSE;
+	    if (programPopup.isDisplayed()) {
+	    	if (requiredAlerts != null 
+	    			&& !requiredAlerts.isEmpty()
+	    			&& requiredAlerts.size() == 2) {
+	    		WebElement pgmDescReqAlert = requiredAlerts.get(0);
+		    	WebElement pgmStatusReqAlert = requiredAlerts.get(1);
+		    	if (pgmDescReqAlert.isDisplayed()
+		    			&& pgmStatusReqAlert.isDisplayed()) {
+		    		result = Boolean.TRUE;
+		    	}
+	    	} else {
+	    		result = Boolean.FALSE;
+	    	}
+		}
+	    return result;
+	}
+
+	public Boolean verifyNewProgramPopupDescEntered() {
+		Boolean result = Boolean.FALSE;
+	    if (programPopup.isDisplayed()) {
+	    	if (requiredAlerts != null 
+	    			&& !requiredAlerts.isEmpty()
+	    			&& requiredAlerts.size() == 2) {
+	    		WebElement pgmNameReqAlert = requiredAlerts.get(0);
+		    	WebElement pgmStatusReqAlert = requiredAlerts.get(1);
+		    	if (pgmNameReqAlert.isDisplayed()
+		    			&& pgmStatusReqAlert.isDisplayed()) {
+		    		result = Boolean.TRUE;
+		    	}
+	    	} else {
+	    		result = Boolean.FALSE;
+	    	}
+		}
+	    return result;
+	}
+
+	public Boolean verifyNewProgramPopupStatusEntered() {
+		Boolean result = Boolean.FALSE;
+	    if (programPopup.isDisplayed()) {
+	    	
+	    	if (requiredAlerts != null 
+	    			&& !requiredAlerts.isEmpty()
+	    			&& requiredAlerts.size() == 2) {
+	    		WebElement pgmNameReqAlert = requiredAlerts.get(0);
+		    	WebElement pgmDescReqAlert = requiredAlerts.get(1);
+		    	if (pgmNameReqAlert.isDisplayed()
+		    			&& pgmDescReqAlert.isDisplayed()) {
+		    		result = Boolean.TRUE;
+		    	}
+	    	} else {
+	    		result = Boolean.FALSE;
+	    	}
+		}
+	    return result;
+	}
+
+
+	public String ValidateNewProgramPopup() {
+	    if (programPopup.isDisplayed()) {
+	    	String poptitle = Popuptitle.getText();
+	    	System.out.println("popup title text is: " +poptitle);
+	        return Popuptitle.getText();
+	    } else {
+	        return "";
+	    	}
+		}
+	
+	   public String validateNameInPopup() {
+		   if (namepopupvaldiation.isDisplayed()) {
+	   		String namef = namepopupvaldiation.getText();
+	   		System.out.println("program name input field is: " +namef);
+	   		return namepopupvaldiation.getText();
+	   	} else {
+	   		return "";
+	   	}
+	   }
+	    
+	     public String VerifyPagination() {
+	    	int lowIndex = 0;
+	    	int highIndex = 0;
+	    	List<String> programs = new ArrayList<String>();
+	    	// find the web element for the next page
+	    	// TODO:
+	    	System.out.println("I am here in verify pagination");
+	    	// loop until the last page
+	    	while (rightarrowbtn.isEnabled()) {
+	    		System.out.println("I am in the outer loop ....");
+		    	// get the program table displayed on the browser
+		    	//List<WebElement> program_table = driver.findElements(By.cssSelector(".<class p-datatable-tbody>"));
+		    	if (program_table != null && highIndex ==5) {
+		    		highIndex = program_table.size();
+		    	}
+		    	// loop the program table
+		    	for (WebElement ele : program_table) {
+		    		System.out.println("I am in the inner loop ....");
+		    		programs.add(ele.getText());
+		    	}
+		    	System.out.println("programs size: " + programs.size());
+		    	rightarrowbtn.click();
+		    	// TODO: click on the next page
+	    	}
+	    	
+	    	int totalRecords = programs.size();
+	    	System.out.println("programs size: " + totalRecords);
+			
+	    	String p=programpagination.getText();
+			return p;
+		}
+	    
+	    public WebElement searchBox() {
+	    /*	String stxt = searchbox.getText();
+	    	System.out.println("search box text" +stxt);
+	    	String stxt1 = searchbox.getAttribute("innerText");
+	    	System.out.println("search box text using attribute" +stxt1);*/
+			return searchbox;
+			
+			
+		}
+	    
+	    public WebElement editDeleteBtn() {
+			return editdeletebtn;
+			
+		}
+		
+	 public boolean verifyDelIcon()
+		{
+			boolean delIsPresent=delIcon.isDisplayed();
+			return delIsPresent;
+		}
+	    
+	 public boolean verifycheckBox()
+	{
+		List<WebElement> tablerows=driver.findElements(By.xpath("//table//tr"));
+		int s=tablerows.size();
+		boolean checkBoxISpresent=false;
+		for(int i=1;i<=s;i++)
+		{
+			WebElement checkBox=driver.findElement(By.xpath("(//table//tr)["+i+"]"));
+			if(checkBox.isDisplayed()==true)
+			{
+				return checkBoxISpresent=true;
+			}
+			else
+			{
+				
+				break;
+			}
+				
+	     }
+		return checkBoxISpresent ;
+	}
+	public boolean textBoxPresent(String textBox)
+	{
+		WebElement textBox_present= driver.findElement(By.id(textBox));
+		boolean txt_ispresent= textBox_present.isDisplayed();
+		 return  txt_ispresent;
+		
+	}
+
+	}
+
+
+
