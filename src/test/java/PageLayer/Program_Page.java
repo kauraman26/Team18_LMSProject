@@ -106,12 +106,8 @@ public class Program_Page{
 		String pgmDesc = testdatabyTC.get("programDescription");
 		CommonUtils.webElement_Click(newpgmbtn);
 		System.out.println("programName " +pgmName);
-		if(pgmName != null) {
-			CommonUtils.webSendKeys(programName,pgmName);
-		}
-		if(pgmDesc != null) {
-			CommonUtils.webSendKeys(programDesc,pgmDesc);
-		}
+		CommonUtils.webSendKeys(programName,pgmName != null? pgmName:"");
+		CommonUtils.webSendKeys(programDesc,pgmDesc != null? pgmDesc :"");
 		sleep();
 		programDesc.sendKeys(Keys.TAB);
 		driver.findElement(By.id("Active")).sendKeys(Keys.SPACE);
@@ -196,12 +192,25 @@ public class Program_Page{
 	public int validateOrder(String linkName, String orderType) {
 		int columnIndex = 2;
 		if("programName".equalsIgnoreCase(linkName)) {
+		
 			columnIndex = 2;
-		}else if("programDescription".equalsIgnoreCase(linkName)) {
+		}
+		else if("programDescription".equalsIgnoreCase(linkName)) {
 			columnIndex = 3;
-		}else {
+		}else if("programStatus".equalsIgnoreCase(linkName)){
 			columnIndex = 4;
 		}
+		else if("userId".equalsIgnoreCase(linkName))
+		{
+			columnIndex = 2;
+		}
+		else if("userFirstName".equalsIgnoreCase(linkName)) {
+			columnIndex = 3;
+		}
+		else if("userPhoneNumber".equalsIgnoreCase(linkName)) {
+			columnIndex = 4;
+		}
+		
 		WebElement firstElement = driver.findElement(By.xpath("//tbody/tr[1]/td["+ columnIndex + "]"));
 		WebElement secondElement = driver.findElement(By.xpath("//tbody/tr[2]/td[" + columnIndex + "]"));
 		System.out.println(firstElement.getText() + "VS " + secondElement.getText());
@@ -218,19 +227,38 @@ public class Program_Page{
 		
 		if("previous".equalsIgnoreCase(nextAction)){
 			currentPage--;
-		}else if("next".equalsIgnoreCase(nextAction)) {   
+		}else if("next".equalsIgnoreCase(nextAction)) {
 			currentPage++;
 		}else if("first".equals(nextAction)) {
 			currentPage = 1;
 		}else {
+			System.out.println(currentPage+"oooooooooo");
 			String text = driver.findElement(By.xpath("//div[contains(text(),'In total there are')]")).getText();
+			System.out.println(text);
+			String[] t=text.split(" ");
+			System.out.println(t[5]);
+			if(t[5].equalsIgnoreCase("programs."))
+			{
 			text = text.replace("In total there are", "").replace("programs.", "").trim();
 			currentPage =Integer.parseInt(text); //driver.findElements(By.xpath("//p-paginator/div/button")).size()+1;
 			currentPage =  (int) Math.ceil(currentPage/5D);
-		}
+			//System.out.println(currentPage);
+			}
+			else
+			{
+				text = text.replace("In total there are", "").replace("users.", "").trim();
+				currentPage =Integer.parseInt(text); //driver.findElements(By.xpath("//p-paginator/div/button")).size()+1;
+				currentPage =  (int) Math.ceil(currentPage/5D);
+			}
+
+			}
+			
+		
 		System.out.println( currentPage + "   BBBAA " + Integer.parseInt(pageMap.get("current").getText()));
 		 Assert.assertTrue(currentPage == Integer.parseInt(pageMap.get("current").getText()));
 	}
+	
+	
 	
 	public void clickNavigation(String navigationLink) {
 		
